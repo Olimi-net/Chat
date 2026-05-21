@@ -1,0 +1,18 @@
+﻿<Window x:Class="ChatClient.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:ChatClient.ViewModel"
+        xmlns:user="clr-namespace:ChatClient.View"
+        xmlns:helper="clr-namespace:ChatClient.Helper"
+        Title="Chat client" Height="350" Width="525" Closing="Window_Closing">
+    <Window.Resources>
+        <helper:VisibilityConverter x:Key="VisibleConverter"/>
+    </Window.Resources>
+    
+    <Grid>
+        <user:ChatControl Visibility="{Binding Path=CanUseChat, 
+            Converter={StaticResource 'VisibleConverter'}}"/>
+        <user:LoginControl Visibility="{Binding Path=IsAuth, 
+            Converter={StaticResource 'VisibleConverter'}}"/>
+    </Grid>
+</Window>
